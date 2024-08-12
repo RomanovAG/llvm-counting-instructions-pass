@@ -8,17 +8,17 @@ using namespace llvm;
 namespace {
 
 void
-VisitFunction(Function &Func)
+VisitFunction(const Function &Func)
 {
-	DenseMap<unsigned, unsigned> InstCount;
+	DenseMap<unsigned, unsigned> inst_count;
 	
 	for (inst_iterator I = inst_begin(Func), E = inst_end(Func); I != E; I++)
 	{
-		InstCount[I->getOpcode()]++;
+		inst_count[I->getOpcode()]++;
 	}
 
 	outs() << "Function " << Func.getName() << ":\n";
-	for (const auto &inst : InstCount)
+	for (const auto &inst : inst_count)
 	{
 		outs() << "\t" << Instruction::getOpcodeName(inst.first) << ":\t" << inst.second << "\n";
 	}
