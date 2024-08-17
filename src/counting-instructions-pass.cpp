@@ -12,7 +12,7 @@ VisitFunction(const Function &Func)
 {
 	DenseMap<unsigned, unsigned> inst_count;
 	
-	for (inst_iterator I = inst_begin(Func), E = inst_end(Func); I != E; I++)
+	for (inst_iterator I = inst_begin(Func), E = inst_end(Func); I != E; ++I)
 	{
 		inst_count[I->getOpcode()]++;
 	}
